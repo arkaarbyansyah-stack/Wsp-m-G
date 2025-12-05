@@ -1,0 +1,170 @@
+body {
+    background: #e7f5ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+}
+
+#game-container {
+    position: relative;
+    width: 600px;
+    height: 220px;
+    background: #b0e0e6;
+    overflow: hidden;
+    border: 2.5px solid #778;
+    margin-top: 50px;
+}
+
+#ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: #556b2f;
+    z-index: 2;
+}
+
+/* ----------- PLAYER/MECHA DESIGN ------------- */
+#player {
+    position: absolute;
+    bottom: 45px;
+    left: 50px;
+    width: 60px;
+    height: 88px;
+    /* base grid, elements inside overlay and styled */
+    z-index: 3;
+    /* Untuk transisi saat game over */
+    transition: filter 0.2s;
+}
+
+/* Tubuh utama */
+.mecha-body {
+    position: absolute;
+    left: 5px;
+    top: 18px;
+    width: 50px;
+    height: 40px;
+    background: #525457;
+    border-radius: 10px 10px 22px 22px / 20px 20px 25px 25px;
+    border: 2.5px solid #34363a;
+}
+
+/* Tangan/mecha cannon kiri */
+.mecha-arm.left {
+    position: absolute;
+    left: -18px;
+    top: 27px;
+    width: 20px;
+    height: 18px;
+    background: #393a3f;
+    border-radius: 7px 7px 5px 8px / 7px 26px 7px 8px;
+    border: 2px solid #595c61;
+    z-index: 2;
+}
+.mecha-arm.right {
+    position: absolute;
+    right: -18px;
+    top: 27px;
+    width: 20px;
+    height: 18px;
+    background: #393a3f;
+    border-radius: 8px 7px 5px 7px / 15px 20px 6px 16px;
+    border: 2px solid #595c61;
+    z-index: 2;
+}
+
+/* Kaki jetpack */
+.mecha-leg.left, .mecha-leg.right {
+    position: absolute;
+    width: 13px;
+    height: 32px;
+    background: #1d1e25;
+    bottom: -27px;
+    border-radius: 7px;
+}
+.mecha-leg.left  { left: 8px; }
+.mecha-leg.right { right: 8px; }
+
+/* Reactor di dada */
+.reactor {
+    position: absolute;
+    top: 34px;
+    left: 22px;
+    width: 18px;
+    height: 18px;
+    background: #fead14;
+    border-radius: 50%;
+    margin: 0;
+    border: 5px solid #da7e06;
+    box-shadow: 0 0 14px 4px #ffd31570, 0 0 3px 3px #fff17070;
+    z-index: 3;
+}
+
+/* Thruster kaki (asap/jump jet-ke bawah) */
+.thruster.left, .thruster.right {
+    position: absolute;
+    width: 10px;
+    height: 17px;
+    background: linear-gradient(#ffe474 65%, #f78707 90%);
+    bottom: -35px;
+    z-index: 1;
+    filter: blur(2.2px);
+    display: none;
+}
+.thruster.left { left: 9px;}
+.thruster.right { right: 9px;}
+
+/* Cerobong api mecha */
+.chimney.left, .chimney.right {
+    position: absolute;
+    width: 15px;
+    height: 26px;
+    background: linear-gradient(#ffd457 60%, #d18f29 100%);
+    top: -9px;
+    border-radius: 4px 6px 3px 3px;
+    box-shadow: 0 0 6px 2px #ffeeab66;
+    border: 1.5px solid #333;
+}
+.chimney.left { left: 1px; }
+.chimney.right { right: 1px; }
+
+/* ---------- Obstacle */
+.obstacle {
+    position: absolute;
+    bottom: 45px;
+    width: 22px;
+    height: 47px;
+    background: #282118;
+    border-radius: 5px;
+    box-shadow: 0 0 2px #ffe17466;
+    z-index: 2;
+}
+
+#score {
+    font-size: 1.22em;
+    margin-top: 20px;
+    color: #333;
+}
+
+#restart-btn {
+    margin-top: 15px;
+    font-size: 1em;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: none;
+    background: #7fffd4;
+    color: #222;
+    cursor: pointer;
+}
+#restart-btn:hover {
+    background: #b8ffd4;
+}
+
+/* Filter abu saat game over */
+#player.gameover {
+    filter: grayscale(85%) brightness(0.7);
+}
